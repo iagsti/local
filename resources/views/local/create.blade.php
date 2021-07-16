@@ -16,4 +16,5 @@
     <label for="local-descricao">Descricao:</label>
     <textarea name="descricao" id="local-descricao" cols="30" rows="10"></textarea>
 
+    <button type="submit" class="btn btn-outline-primary">Enviar</button>
 </form>
