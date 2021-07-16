@@ -7,32 +7,49 @@ use Tests\TestCase;
 
 class NewLocalTest extends TestCase
 {
+
+    private $response;
+
+    /**
+     * @inheritdoc
+     */
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->response = $this->get(route('local.create'));
+    }
+
     /**
      * Test status code. It shoud be 200.
      *
      * @return void
      */
-    public function test_status_code()
+    public function test_status_code(): void
     {
-        $response = $this->get(route('local.create'));
-        $response->assertStatus(200);
+        $this->response->assertStatus(200);
     }
 
-    public function test_has_title()
+    /**
+     * Test if the title is present.
+     *
+     * @return void
+     */
+    public function test_has_title(): void
     {
-        $response = $this->get(route('local.create'));
-        $response->assertSee('Adicionar Novo Local');
+        $this->response->assertSee('Adicionar Novo Local');
     }
 
-    public function test_see_form_fields()
+    /**
+     * Test if the form fields is present.
+     *
+     * @return void
+     */
+    public function test_see_form_fields(): void
     {
-
-        $response = $this->get(route('local.create'));
-
-        $response->assertSee('bloco');
-        $response->assertSee('nome');
-        $response->assertSee('pavimento');
-        $response->assertSee('departamento');
-        $response->assertSee('descricao');
+        $this->response->assertSee('bloco');
+        $this->response->assertSee('nome');
+        $this->response->assertSee('pavimento');
+        $this->response->assertSee('departamento');
+        $this->response->assertSee('descricao');
     }
 }
