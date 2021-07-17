@@ -12,7 +12,13 @@
                 Adicionar Novo Local
             </div>
             <div class="card-body">
-                <form action="#" method="post">
+                @if (session('success'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('success') }}
+                    </div>
+                @endif
+                <form action="{{ route('local.store') }}" method="post">
+                    @csrf
                     <div class="mb-3">
                         <label for="local-nome" class="form-label fw-bold text-primary">Nome:</label>
                         <input type="text" class="form-control" name="nome" id="local-nome" aria-describedby="NomeLocal">
