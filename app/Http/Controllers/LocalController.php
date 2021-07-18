@@ -2,18 +2,32 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Local;
 use App\Http\Requests\StoreLocalRequest;
 
 
 class LocalController extends Controller
 {
+    /**
+     * List Local data
+     */
+    public function index()
+    {
+        $locals = Local::paginate(15);
+        return view('local.index', ['locals' => $locals]);
+    }
+
+    /**
+     * Create a new Local
+     */
     public function create()
     {
         return view('local.create');
     }
 
+    /**
+     * Persist local data
+     */
     public function store(StoreLocalRequest $request)
     {
         $validatedData = $request->validated();
