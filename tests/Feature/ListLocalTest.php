@@ -2,12 +2,12 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
 
 class ListLocalTest extends TestCase
 {
+    use DatabaseMigrations;
 
     private $response;
 
@@ -25,7 +25,7 @@ class ListLocalTest extends TestCase
      *
      * @return void
      */
-    public function test_staus_code()
+    public function test_staus_code(): void
     {
         $this->response->assertStatus(200);
     }
