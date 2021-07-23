@@ -15,4 +15,10 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\LocalController;
 
+
+Route::get('/', ['as' => 'local.home', function () {
+    return view('local.home');
+}]);
+
+
 Route::resource('/local', LocalController::class);
