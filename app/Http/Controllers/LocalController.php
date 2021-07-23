@@ -35,4 +35,21 @@ class LocalController extends Controller
 
         return redirect()->route('local.create')->with('success', 'O local foi criado com sucesso!');
     }
+
+    /**
+     * Edit Local data
+     */
+    public function edit($local)
+    {
+        $local = Local::find($local);
+
+        $context = [
+            'blocos' => config('options.blocos'),
+            'pavimentos' => config('options.pavimentos'),
+            'departamentos' => config('options.departamentos'),
+            'local' => $local,
+        ];
+
+        return view('local.edit', $context);
+    }
 }
