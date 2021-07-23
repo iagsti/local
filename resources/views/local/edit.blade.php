@@ -1,5 +1,9 @@
 @extends('main')
 
+@section('title')
+    | <span class="text-secondary">Editar {{ $local->bloco }}-{{ $local->nome }}</span>
+@endsection
+
 @section('content')
 
     <div class="border-4 border-top border-primary shadow-sm">

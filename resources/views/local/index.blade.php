@@ -1,7 +1,7 @@
 @extends('main')
 
 @section('title')
-    Lista
+    | <span class="text-secondary">Locais</span>
 @endsection
 
 @section('content')

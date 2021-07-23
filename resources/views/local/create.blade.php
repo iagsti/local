@@ -1,7 +1,7 @@
 @extends('main')
 
 @section('title')
-    Novo Local
+    | <span class="text-secondary">Novo Local</span>
 @endsection
 
 @section('content')
