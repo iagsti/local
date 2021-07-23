@@ -14,13 +14,8 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-light bg-light sticky-top shadow-sm mb-3">
-        <div class="container-fluid">
-            <a href="" class="navbar-brand text-primary">
-                <strong>LOCAIS</strong>
-            </a>
-        </div>
-    </nav>
+    @include('menu')
+
     <div class="container-fluid">
         @yield('content')
     </div>
