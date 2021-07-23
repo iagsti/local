@@ -1,9 +1,5 @@
 @extends('main')
 
-@section('title')
-    Novo Local
-@endsection
-
 @section('content')
 
     <div class="border-4 border-top border-primary shadow-sm">
@@ -17,19 +13,25 @@
                         {{ session('success') }}
                     </div>
                 @endif
-                <form action="{{ route('local.store') }}" method="post">
+                <form action="{{ route('local.update', ['local' => $local->id]) }}" method="post">
                     @csrf
                     <div class="mb-3">
                         <label for="local-nome" class="form-label fw-bold text-primary">Nome:</label>
-                        <input type="text" class="form-control" name="nome" id="local-nome" aria-describedby="NomeLocal">
+                        <input type="text" class="form-control" name="nome" value="{{ $local->nome }}" id="local-nome"
+                            aria-describedby="NomeLocal">
                     </div>
 
                     <div class="mb-3">
                         <label for="local-bloco" class="form-label fw-bold text-primary">Bloco:</label>
                         <select name="bloco" class="form-select" id="local-bloco">
                             @foreach ($blocos as $option)
-                                <option value="{{ $option['value'] }}">{{ $option['name'] }}</option>
+                                @if ($option['value'] === $local->bloco)
+                                    <option value="{{ $option['value'] }}" selected>{{ $option['name'] }}</option>
+                                @else
+                                    <option value="{{ $option['value'] }}">{{ $option['name'] }}</option>
+                                @endif
                             @endforeach
+                            <option value="PRINCIPAL">PRINCIPAL</option>
                         </select>
                     </div>
 
@@ -37,7 +39,11 @@
                         <label for="local-pavimento" class="form-label fw-bold text-primary">Pavimento:</label>
                         <select name="pavimento" class="form-select" id="local-pavimento">
                             @foreach ($pavimentos as $option)
-                                <option value="{{ $option['value'] }}">{{ $option['name'] }}</option>
+                                @if ($option['value'] === $local->pavimento)
+                                    <option value="{{ $option['value'] }}" selected>{{ $option['name'] }}</option>
+                                @else
+                                    <option value="{{ $option['value'] }}">{{ $option['name'] }}</option>
+                                @endif
                             @endforeach
                         </select>
                     </div>
@@ -46,15 +52,19 @@
                         <label for="local-departamento" class="form-label fw-bold text-primary">Departamento:</label>
                         <select name="departamento" class="form-select" id="local-departamento">
                             @foreach ($departamentos as $option)
-                                <option value="{{ $option['value'] }}">{{ $option['name'] }}</option>
+                                @if ($option['value'] === $local->departamento)
+                                    <option value="{{ $option['value'] }}" selected>{{ $option['name'] }}</option>
+                                @else
+                                    <option value="{{ $option['value'] }}">{{ $option['name'] }}</option>
+                                @endif
                             @endforeach
-
                         </select>
                     </div>
 
                     <div class="mb-3">
                         <label for="local-descricao" class="form-label fw-bold text-primary">Descricao:</label>
-                        <textarea name="descricao" class="form-control" id="local-descricao" cols="30" rows="10"></textarea>
+                        <textarea name="descricao" class="form-control" id="local-descricao" cols="30"
+                            rows="10">{{ $local->descricao }}</textarea>
                     </div>
 
                     <button type="submit" class="btn btn-outline-primary">Enviar</button>

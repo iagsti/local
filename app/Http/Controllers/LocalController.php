@@ -22,7 +22,13 @@ class LocalController extends Controller
      */
     public function create()
     {
-        return view('local.create');
+        $locals = [
+            'blocos' => config('options.blocos'),
+            'pavimentos' => config('options.pavimentos'),
+            'departamentos' => config('options.departamentos'),
+        ];
+
+        return view('local.create', $locals);
     }
 
     /**
@@ -34,5 +40,22 @@ class LocalController extends Controller
         Local::create($validatedData);
 
         return redirect()->route('local.create')->with('success', 'O local foi criado com sucesso!');
+    }
+
+    /**
+     * Edit Local data
+     */
+    public function edit($local)
+    {
+        $local = Local::find($local);
+
+        $context = [
+            'blocos' => config('options.blocos'),
+            'pavimentos' => config('options.pavimentos'),
+            'departamentos' => config('options.departamentos'),
+            'local' => $local,
+        ];
+
+        return view('local.edit', $context);
     }
 }

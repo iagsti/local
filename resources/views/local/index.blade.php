@@ -29,7 +29,8 @@
                                 <td>{{ $row->pavimento }}</td>
                                 <td>{{ $row->departamento }}</td>
                                 <td>
-                                    <a href="#" class="btn btn-outline-primary" role="button">
+                                    <a href="{{ route('local.edit', ['local' => $row->id]) }}"
+                                        class="btn btn-outline-primary" role="button">
                                         <i class="bi bi-pencil-square"></i>
                                         Editar
                                     </a>
