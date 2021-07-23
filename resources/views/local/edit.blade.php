@@ -15,6 +15,7 @@
                 @endif
                 <form action="{{ route('local.update', ['local' => $local->id]) }}" method="post">
                     @csrf
+                    @method('PUT')
                     <div class="mb-3">
                         <label for="local-nome" class="form-label fw-bold text-primary">Nome:</label>
                         <input type="text" class="form-control" name="nome" value="{{ $local->nome }}" id="local-nome"
