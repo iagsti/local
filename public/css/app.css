@@ -10889,6 +10889,17 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-body {
+.bg-app {
   background-color: rgba(0, 0, 0, 0.1);
+}
+
+.bg-front {
+  height: 100vh;
+  background-image: url("/images/front-background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.front {
+  height: 100%;
 }
