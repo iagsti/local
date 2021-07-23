@@ -22,7 +22,13 @@ class LocalController extends Controller
      */
     public function create()
     {
-        return view('local.create');
+        $locals = [
+            'blocos' => config('options.blocos'),
+            'pavimentos' => config('options.pavimentos'),
+            'departamentos' => config('options.departamentos'),
+        ];
+
+        return view('local.create', $locals);
     }
 
     /**
