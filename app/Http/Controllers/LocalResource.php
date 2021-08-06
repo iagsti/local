@@ -12,8 +12,14 @@ class LocalResource extends Controller
         return new LocalCollection(Local::paginate());
     }
 
-    public function local($item)
+    public function local($item, $parent = null, $value = null)
     {
-        return new LocalCollection(Local::select($item)->distinct()->get());
+        $query = Local::select($item);
+
+        if ($parent && $value) {
+            $query = $query->where($parent, $value);
+        }
+
+        return new LocalCollection($query->distinct()->get());
     }
 }
