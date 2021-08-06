@@ -13,23 +13,61 @@ class LocalResourceBlocoTest extends TestCase
 
     use DatabaseMigrations;
 
-    private $response;
-
+    /**
+     * Setup tests
+     *
+     * @return void
+     */
     protected function setUp(): void
     {
         parent::setUp();
         Local::factory()->create();
-        $this->response = $this->get('/api/locals/blocos');
     }
 
-    public function test_status_code()
+    /**
+     * Status code should be 200
+     *
+     * @return void
+     */
+    public function test_status_code(): void
     {
-        $this->response->assertStatus(200);
+        $response = $this->get('/api/locals/bloco');
+        $response->assertStatus(200);
     }
 
-    public function test_response_data()
+    /**
+     * It should return a list of blocos
+     *
+     * @return void
+     */
+    public function test_response_for_bloco(): void
     {
         $expected = Local::select('bloco')->distinct()->get()->toArray();
-        $this->response->assertJsonFragment($expected);
+        $response = $this->get('/api/locals/bloco');
+        $response->assertJsonFragment($expected);
+    }
+
+    /**
+     * It should return a list of pavimento
+     *
+     * @return void
+     */
+    public function test_response_for_pavimento(): void
+    {
+        $expected = Local::select('pavimento')->distinct()->get()->toArray();
+        $response = $this->get('/api/locals/pavimento');
+        $response->assertJsonFragment($expected);
+    }
+
+    /**
+     * It should return a list of nome
+     *
+     * @return void
+     */
+    public function test_response_for_nome(): void
+    {
+        $expected = Local::select('nome')->distinct()->get()->toArray();
+        $response = $this->get('/api/locals/nome');
+        $response->assertJsonFragment($expected);
     }
 }
