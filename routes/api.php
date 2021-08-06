@@ -20,3 +20,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/locals', [LocalResource::class, 'index']);
+
+Route::get('/locals/{item}', [LocalResource::class, 'local']);
