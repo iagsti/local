@@ -12,8 +12,8 @@ class LocalResource extends Controller
         return new LocalCollection(Local::paginate());
     }
 
-    public function blocos()
+    public function local($item)
     {
-        return new LocalCollection(Local::select('bloco')->distinct()->get());
+        return new LocalCollection(Local::select($item)->distinct()->get());
     }
 }
