@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 use App\Http\Controllers\LocalController;
+use App\Http\Controllers\BlocoController;
 
 
 Route::get('/', ['as' => 'local.home', function () {
@@ -22,3 +23,5 @@ Route::get('/', ['as' => 'local.home', function () {
 
 
 Route::resource('/local', LocalController::class);
+
+Route::resource('/bloco', BlocoController::class);
