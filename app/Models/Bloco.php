@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Bloco extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'nome'
+    ];
 }
