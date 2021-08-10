@@ -16,7 +16,7 @@ class CreateTableBloco extends Migration
         Schema::create('blocos', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('nome', 10);
+            $table->string('nome', 10)->unique();
         });
     }
 
