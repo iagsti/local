@@ -18,7 +18,7 @@
                     </div>
                 @endif
 
-                <form action="#" method="post">
+                <form action="{{ route('bloco.store') }}" method="post">
                     @csrf
 
                     <div class="mb-3">
